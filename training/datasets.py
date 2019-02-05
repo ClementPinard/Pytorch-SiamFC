@@ -36,7 +36,7 @@ class ImageNetVID(Dataset):
     """
 
     def __init__(self, imagenet_dir, transforms=ToTensor(),
-                 reference_size=127, search_size=255, final_size=33,
+                 reference_size=127, search_size=255, final_size=129,
                  label_fcn=BCELoss, upscale_factor=4,
                  max_frame_sep=50, pos_thr=25, neg_thr=50,
                  cxt_margin=0.5, single_label=True, img_read_fcn=imread,
