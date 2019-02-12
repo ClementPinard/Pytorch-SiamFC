@@ -47,7 +47,7 @@ def parse_arguments():
                         default=4, help="The number of workers for the dataloaders"
                                         " i.e. the number of additional"
                                         " dedicated threads to dataloading.")
-    parser.add_argument('-f', '--imutils_flag', default='fast', type=str,
+    parser.add_argument('-f', '--imutils_flag', default='safe', type=str,
                         choices=imutils.VALID_FLAGS,
                         help="Optional, the flag of the image_utils defining "
                         "the image processing tools.")
