@@ -14,6 +14,7 @@ def BCELogit_Loss(score_map, labels):
         loss (scalar torch.Tensor): The BCE Loss with Logits for the score map and labels.
     """
     labels = labels.unsqueeze(1)
+    #UserWarning: reduction='elementwise_mean' is deprecated, please use reduction='mean' instead. warnings.warn("reduction='elementwise_mean' is deprecated, please use reduction='mean' instead.")
     loss = F.binary_cross_entropy_with_logits(score_map, labels[:, :, :, :, 0],
                                               weight=labels[:, :, :, :, 1],
                                               reduction='mean')

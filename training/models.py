@@ -10,6 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.init import xavier_uniform_, constant_, zeros_, normal_
 
+from training.bicubic import bicubic
 
 class BaselineEmbeddingNet(nn.Module):
     """ Definition of the embedding network used in the baseline experiment of
@@ -231,8 +232,8 @@ class SiameseNet(nn.Module):
         match_map = match_map.permute(1, 0, 2, 3)
         match_map = self.match_batchnorm(match_map)
         if self.upscale:
-            match_map = F.interpolate(match_map, self.upsc_size, mode='bilinear',
-                                      align_corners=False)
+            #match_map = F.interpolate(match_map, self.upsc_size, mode='bilinear', align_corners=False)
+            match_map = bicubic(match_map, self.upsc_size)
 
         return match_map
 
