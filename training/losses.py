@@ -14,7 +14,10 @@ def BCELogit_Loss(score_map, labels):
         loss (scalar torch.Tensor): The BCE Loss with Logits for the score map and labels.
     """
     labels = labels.unsqueeze(1)
+    """
+        The choices for the parameter reduction of the function  torch.nn.functional.binary_cross_entropy_with_logits in pytorch 0.4.1 are 'none'|‘elementwise_mean’ | ‘sum’.     
+    """
     loss = F.binary_cross_entropy_with_logits(score_map, labels[:, :, :, :, 0],
                                               weight=labels[:, :, :, :, 1],
-                                              reduction='mean')
+                                              reduction='elementwise_mean')
     return loss
